@@ -62,35 +62,44 @@ const alerta = document.querySelector("#alerta")
 /* Elements List container */
 const taskList = document.getElementById('task-list')
 const item = document.querySelector(".task-item")
-const items = document.querySelectorAll(".task-item")
+const deleteButton = document.querySelector(".delete-button")
+const plantilla = item.cloneNode(true)
 
 
+// console.log(items[0].childNodes[3]);
+
+/* item.addEventListener('click' , (e)=>{
+    console.log(e.target);
+    
+}) */
 
 buttonAddTask.addEventListener('click', () => {
     if (inputTask.value.length <= 0) {
         alerta.textContent = "Escribe una tarea...!"
     }
     else {
-        
         alerta.textContent = ""
-        const n = item.cloneNode(true)
+        const n = plantilla.cloneNode(true)
         taskList.appendChild(n)
         n.querySelectorAll('span')[1]
             .textContent = inputTask.value
         inputTask.value = ""
-        console.log(n);
-        
-        // if (condition) {
-            
-        // }
+    
 
     }
 })
 
-
+taskList.addEventListener('click' ,(e)=>{
+    const deleteButton = e.target.closest('.delete-button');
+    //Como puedo dar click en cualquier parte del contenedor lista, validamos que lo que se este guadando en delete button no sea null
+    if(!deleteButton) return
+    const taskItem = deleteButton.closest('.task-item');
+    taskItem.remove()
+    
+})
 
 taskList.addEventListener('click', (e) => { // se agrega el e(EVENTO) para delegaciones de eventos, ya que si yo agrego un elemento nuevo no se le aplica el evento, de esta forma cada que haga click lee el evento y recupera el elemento con closest
-
+    
     //importante el e(EVENTO) no significa que haga click en taskList, si no en el elemento más interno, en este ejemplo le doy click al span
     //el closest detecta el click en el span y busca la clase div.size-5 en este caso el div padre
     /* <div
@@ -120,7 +129,9 @@ taskList.addEventListener('click', (e) => { // se agrega el e(EVENTO) para deleg
     
     span.classList.toggle('hidden');
     t.classList.toggle('bg-primary');
+
 });
+
 
 
 
@@ -140,5 +151,4 @@ btnAge.addEventListener('click', () => {
         accessLabel.classList.add('hidden')
     }
 })
-
 
