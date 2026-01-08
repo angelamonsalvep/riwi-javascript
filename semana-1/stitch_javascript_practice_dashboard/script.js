@@ -66,12 +66,6 @@ const deleteButton = document.querySelector(".delete-button")
 const plantilla = item.cloneNode(true)
 
 
-// console.log(items[0].childNodes[3]);
-
-/* item.addEventListener('click' , (e)=>{
-    console.log(e.target);
-    
-}) */
 
 buttonAddTask.addEventListener('click', () => {
     if (inputTask.value.length <= 0) {
@@ -140,7 +134,6 @@ const btnAge = document.querySelector('#button-age')
 const edad = document.getElementById('input-age')
 
 const accessLabel = document.getElementById('access-label')
-console.log(accessLabel.textContent);
 
 
 btnAge.addEventListener('click', () => {
@@ -156,9 +149,7 @@ btnAge.addEventListener('click', () => {
 const btnDarkMode = document.getElementById('toggle-dark-mode')
 const demoElement =  document.getElementById('demo-section')
 btnDarkMode.addEventListener('change', ()=>{
-    /* if (btnDarkMode.checked) {
-    }
-    console.log(btnDarkMode.checked); */
+
     demoElement.classList.toggle('dark')
 })
 
