@@ -152,3 +152,20 @@ btnAge.addEventListener('click', () => {
     }
 })
 
+/* Dark Mode */
+const btnDarkMode = document.getElementById('toggle-dark-mode')
+const demoElement =  document.getElementById('demo-section')
+btnDarkMode.addEventListener('change', ()=>{
+    /* if (btnDarkMode.checked) {
+    }
+    console.log(btnDarkMode.checked); */
+    demoElement.classList.toggle('dark')
+})
+
+const btnDarkModeHeader = document.getElementById('toggle-dark-mode-header')
+btnDarkModeHeader.addEventListener('click', ()=>{
+    let isDark = document.body.classList.toggle('dark')
+    const icon = btnDarkModeHeader.querySelector('span')
+    icon.innerText = isDark ? "dark_mode" : "light_mode"    
+
+})
