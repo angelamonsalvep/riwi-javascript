@@ -61,7 +61,7 @@ const buttonAddTask = manageTaskElements.querySelector('button')
 const alerta = document.querySelector("#alerta")
 /* Elements List container */
 const taskList = document.getElementById('task-list')
-const item = document.querySelector(".task-item") 
+const item = document.querySelector(".task-item")
 const items = document.querySelectorAll(".task-item")
 
 
@@ -71,31 +71,57 @@ buttonAddTask.addEventListener('click', () => {
         alerta.textContent = "Escribe una tarea...!"
     }
     else {
+        
         alerta.textContent = ""
         const n = item.cloneNode(true)
         taskList.appendChild(n)
-        n.querySelector('span').textContent = inputTask.value
+        n.querySelectorAll('span')[1]
+            .textContent = inputTask.value
         inputTask.value = ""
+        console.log(n);
+        
+        // if (condition) {
+            
+        // }
+
     }
 })
 
 
-/* const t = item.querySelector("div.size-5")
-    console.log(t); */
+
+taskList.addEventListener('click', (e) => { // se agrega el e(EVENTO) para delegaciones de eventos, ya que si yo agrego un elemento nuevo no se le aplica el evento, de esta forma cada que haga click lee el evento y recupera el elemento con closest
+
+    //importante el e(EVENTO) no significa que haga click en taskList, si no en el elemento más interno, en este ejemplo le doy click al span
+    //el closest detecta el click en el span y busca la clase div.size-5 en este caso el div padre
+    /* <div
+            class="size-5 rounded border-2 border-gray flex items-center justify-center cursor-pointer">
+            <span class="hidden material-symbols-outlined text-white text-[16px]">check</span>
+        </div>I */
+    const item = e.target.closest('div.size-5'); // clase del item, retorna el item con la clase más cercana hacia arriba (osea padre, abuelo, etc)
+
+    /* Segundo caso */
+    //En este caso funciona dando click en cualquier parte del elemento task item para que busque la clase task-item
+    //importante: el closest busca padres, abuelos... y así mismo
+    //const item = e.target.closest('.task-item'); // clase del item, retorna el item con la clase más cercana hacia arriba (osea padre, abuelo, etc)
     
-items.forEach(item => {
-    item.addEventListener('click', () => {
-        const t = item.querySelector("div.size-5")
-        
-        if (t.childElementCount == 0) {
-            
-        }
-        else if (t.childElementCount == 1){
-            t.classList.add('bg-white')
-            t.removeChild(t.children[0])
-        }
-    })
+    if (!item) return;
+
+    /* Obtengo los elemento para cambiarle las clases a los divs (checkbox)*/
+    const t = item
+    const span = t.querySelector('span');
+    
+    /* acceder al texto */
+    const itemText = e.target.closest('.task-item ') 
+    const text = itemText.querySelector('.text-sm')
+    text.classList.toggle('line-through')
+    text.classList.toggle('text-gray-400')
+    
+    
+    
+    span.classList.toggle('hidden');
+    t.classList.toggle('bg-primary');
 });
+
 
 
 /* Age validate */
@@ -106,11 +132,13 @@ const accessLabel = document.getElementById('access-label')
 console.log(accessLabel.textContent);
 
 
-btnAge.addEventListener('click',()=>{
+btnAge.addEventListener('click', () => {
     if (edad.value >= 18) {
         accessLabel.classList.remove('hidden')
-    }else{
+    } else {
         alert("eres menor de edad")
         accessLabel.classList.add('hidden')
     }
 })
+
+
