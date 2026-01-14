@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Educational SPA Dashboard Variant 2</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between gap-8">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">DevLearner</h2>
+</div>
+<div class="flex-1 max-w-xl">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input block w-full pl-10 pr-3 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm placeholder:text-slate-500" placeholder="Search challenges, docs, or community..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Curriculum</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Projects</a>
+</nav>
+<div class="flex items-center gap-4 border-l border-slate-200 dark:border-slate-700 pl-6">
+<button class="p-2 text-slate-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-slate-200" data-alt="Student profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYCS7j8N-G3wxRW2zJcH_CrJMoFky_j8ycQb80dEHI1vo-xLLgB7jCNMXOAJpOOUSwBbqF7z34uLpf1x0lU0MTsImosKXe3QDgp1L5vsN3z73sD8clZF8dZOFeLblYQaZgj_4FL3qBMVLAcriBCZiMnvJHThWBwSFYFNJwIfpdnnrC1t5OkNDcVk_jgERfqByAHfHYmSKui0g4BY6E6E39EZs2DdophxXXBkIJmX7vQkY-RNMXcN2nKaCpjHOyUQqlhjyCBGFz4HN-");'></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto p-6">
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: User Stats -->
+<div class="col-span-12 lg:col-span-3 space-y-6">
+<div class="stat-box bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-4 mb-6">
+<div class="size-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">emoji_events</span>
+</div>
+<div>
+<p class="text-sm text-slate-500 font-medium">Current Level</p>
+<h3 class="text-2xl font-bold">Level 12</h3>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-sm font-medium">
+<span>XP Progress</span>
+<span>1,250 / 2,000</span>
+</div>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all" style="width: 62.5%;"></div>
+</div>
+<p class="text-xs text-slate-500">750 XP remaining until Level 13</p>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Streak</p>
+<div class="flex items-center gap-1 text-orange-500">
+<span class="material-symbols-outlined text-base">local_fire_department</span>
+<span class="text-lg font-bold">7 Days</span>
+</div>
+</div>
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Ranking</p>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-base">leaderboard</span>
+<span class="text-lg font-bold">#42</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="stat-box bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<h4 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                        Recent Activity
+                    </h4>
+<div class="space-y-4">
+<div class="flex gap-3 text-sm">
+<div class="size-2 mt-1.5 rounded-full bg-green-500"></div>
+<div>
+<p class="font-medium text-slate-800 dark:text-slate-200">Completed: Flexbox Hero</p>
+<p class="text-xs text-slate-500">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-3 text-sm">
+<div class="size-2 mt-1.5 rounded-full bg-blue-500"></div>
+<div>
+<p class="font-medium text-slate-800 dark:text-slate-200">Started: CSS Grid Master</p>
+<p class="text-xs text-slate-500">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Center Column: Challenge Feed -->
+<div class="col-span-12 lg:col-span-6 space-y-6">
+<div class="flex flex-col gap-1 mb-2">
+<h1 class="text-3xl font-black tracking-tight">Coding Challenges</h1>
+<p class="text-slate-500">Level up your skills with real-world project scenarios.</p>
+</div>
+<!-- Challenge Card -->
+<div class="card bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary/50 transition-colors group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Build a Flexbox Layout</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Easy</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Create a responsive navigation bar and hero section using modern CSS Flexbox properties.</p>
+</div>
+<div class="text-primary bg-primary/5 p-2 rounded-lg">
+<span class="material-symbols-outlined">code</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-4 text-xs text-slate-500">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                45 mins
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">stars</span>
+                                200 XP
+                            </div>
+</div>
+<button class="btn-primary px-5 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                            Start Challenge
+                        </button>
+</div>
+</div>
+<!-- Challenge Card -->
+<div class="card bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary/50 transition-colors group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">JS Promises Deep Dive</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">Hard</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Manage complex asynchronous operations by implementing custom Promise chains and Error handling.</p>
+</div>
+<div class="text-primary bg-primary/5 p-2 rounded-lg">
+<span class="material-symbols-outlined">javascript</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-4 text-xs text-slate-500">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                90 mins
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">stars</span>
+                                500 XP
+                            </div>
+</div>
+<button class="btn-primary px-5 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                            Continue Learning
+                        </button>
+</div>
+</div>
+<!-- Challenge Card -->
+<div class="card bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary/50 transition-colors group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Responsive Media Queries</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">Medium</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Optimize a desktop-first landing page for mobile and tablet devices using CSS breakpoints.</p>
+</div>
+<div class="text-primary bg-primary/5 p-2 rounded-lg">
+<span class="material-symbols-outlined">devices</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-4 text-xs text-slate-500">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                60 mins
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">stars</span>
+                                350 XP
+                            </div>
+</div>
+<button class="btn-primary px-5 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                            Start Challenge
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Leaderboard -->
+<div class="col-span-12 lg:col-span-3 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h4 class="font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">military_tech</span>
+                            Top Students
+                        </h4>
+<span class="text-xs font-bold text-slate-400">WEEKLY</span>
+</div>
+<div class="p-2">
+<div class="space-y-1">
+<!-- Leaderboard Row (User highlighted) -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-primary/5 border border-primary/20">
+<div class="flex items-center gap-3">
+<span class="text-sm font-black w-4 text-primary">1.</span>
+<div class="size-8 rounded-full bg-center bg-cover border border-primary/40" data-alt="Leaderboard top student" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBD-ey9qra5q47yHRi-BhouvWXHz2T_B5Uo0aT6EwQR5EcT0dVMBfkgbzCwOaz0jaW33kMM46R99ebqbrOrCdOKXDQmLua6GhKXBAZaEBMK4vgv9DTAKOpmHTSIS5Oth65_HRj-wz6Stuzm1OrlDwspNKlhIXlgAj0BdQuiAqdkNy3JvSA3PI_9q4jj18yK2jpsev-LA35ayXvbGTdYl3czM3zOXJ4Wvx0TjBRmHdK47gSJnJKpW3vDpUMjLTs5Bvb1cYRPc2pCsdj3");'></div>
+<span class="text-sm font-bold">Alex Code</span>
+</div>
+<span class="text-xs font-black text-primary">12.4k</span>
+</div>
+<!-- Row -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-sm font-bold w-4 text-slate-400">2.</span>
+<div class="size-8 rounded-full bg-center bg-cover border border-slate-200" data-alt="Leaderboard student avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJfe1ThTHwTPYHL1qkTA5zOZGy2w0O4VdQ0_ircGmFZBdEqKw7yqSRoMfEccjCjscmlCOPc8L54nPkqGKE_otwfmGMJJ9CbCmCAYCYYP1HChGdqJgYdFHmqwWW0WObo9_L3emBuix2J6vSRSXTSemokzpx2zo7kNnN4ce37mlMY1WEJPHxgWTBlTkSVlbI7PQhnvVZB1fILJQ__5MFgfi7KNkaDe-qdtEco5E0_Rs1zwjAEjch7c7p15Cbywfq895qrWTO06yeZKmg");'></div>
+<span class="text-sm font-medium">Sarah.dev</span>
+</div>
+<span class="text-xs font-bold text-slate-500">11.8k</span>
+</div>
+<!-- Row -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-sm font-bold w-4 text-slate-400">3.</span>
+<div class="size-8 rounded-full bg-center bg-cover border border-slate-200" data-alt="Leaderboard student avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-uFAmeQaiCc9oQ3D96vXchm_Uxn9fQRUydPZWNREku7Dy_ur1vbSoz1LA6hDP3Hfld5-MaQP8M-or0DEZVH7bKGp3T3gLo7BgKsH6SOKQwdl36iLx2Rar_PLlc82w3JG5_TqurFM7fCkdfHAQcZYZQI24Y2c-oFOCmcf7vTeCBmcbOmnixv_fgDfQ0GErPSL_U7w7SxAhc4YtwKu_N30DXuu8ZR0TaTw1bbN0ecANQ0VhscNGc9rMzmCHTgBS9N_wkfD6r8Yec6ZP");'></div>
+<span class="text-sm font-medium">Mike_JS</span>
+</div>
+<span class="text-xs font-bold text-slate-500">10.2k</span>
+</div>
+<!-- Row -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-sm font-bold w-4 text-slate-400">4.</span>
+<div class="size-8 rounded-full bg-center bg-cover border border-slate-200" data-alt="Leaderboard student avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3ZwGro0ASizDDxLVQK1Fp75Cc8Qif3ETEJt8bAnvPTnJA0jziwgDJ5lBoZJD5OQnC6D4ewHtqZZzQP-hADyTJEtp1ThByHRIP_rJQC2yCHJFHGKsY786cvO9gcA4JMqzhnoWjfMc0SFJv2TqziumhkUlTIzQUaRRxxW0T-3tHcwN-mjfTyGGaI6c-hFInxaFP3cA3nPXJrWFCaNVL-wrwJ_3Yd7pYaU97SuDTpD-jVBWq4pYtSEOCIsG1GrdQveW3hPjB_Vd6sKwZ");'></div>
+<span class="text-sm font-medium">EmilyCoder</span>
+</div>
+<span class="text-xs font-bold text-slate-500">9.5k</span>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-slate-100 dark:border-slate-800">
+<button class="w-full text-center text-sm font-bold text-primary hover:underline">View Full Leaderboard</button>
+</div>
+</div>
+<div class="bg-primary rounded-xl p-6 text-white shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-lg font-bold mb-2">Pro Subscription</h4>
+<p class="text-xs text-white/80 mb-4 leading-relaxed">Unlock advanced React tracks and exclusive project assets.</p>
+<button class="w-full py-2 bg-white text-primary rounded-lg font-bold text-sm shadow-sm hover:bg-slate-100 transition-colors">
+                            Upgrade Now
+                        </button>
+</div>
+<div class="absolute -right-4 -bottom-4 text-white/10">
+<span class="material-symbols-outlined text-[100px] rotate-12">school</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
