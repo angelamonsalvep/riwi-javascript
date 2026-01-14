@@ -160,3 +160,8 @@ btnDarkModeHeader.addEventListener('click', ()=>{
     icon.innerText = isDark ? "dark_mode" : "light_mode"    
 
 })
+
+/* Console logger */
+const plantillaLogger = document.querySelector('.console-log')
+const consoleOutput = document.querySelector('.console-output')
+console.log(plantillaLogger);
