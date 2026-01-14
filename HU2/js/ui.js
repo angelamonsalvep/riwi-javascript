@@ -18,6 +18,8 @@ delete
 
 function renderProduct(producto) {
     const li = document.createElement('li')
+    li.dataset.id = producto.id
+    // li.dataset.category = producto.category
     li.classList.add("product-item")
     li.innerHTML = plantillaProducto(producto)
     listaProductos.appendChild(li)

@@ -27,7 +27,10 @@ ul{
 ul li{
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.187);
+    border-radius: 8px;
+    padding: 1rem;
 }
 li p{
     width: 40%;
