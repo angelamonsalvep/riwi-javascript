@@ -14,7 +14,7 @@ function renderContact() {
 }
 
 function renderNotFound() {
-    app.innerHTML = '<h1>❌ Not found 404<h1/><p>Página no encontrada<p/>'
+    app.innerHTML = '<h1> Not found 404<h1/><p>Página no encontrada<p/>'
 }
 
 function renderWithAnimation(renderFunction) {
