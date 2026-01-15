@@ -2,19 +2,33 @@ const app = document.getElementById('app');
 
 
 function renderHome() {
-    app.innerHTML = '<h1>🏠 Home<h1/><p>Bienvenido a nuestra SPA<p/>'
+    app.innerHTML = `<h1>🏠 Home<h1/><p>Bienvenido a nuestra SPA<p/>`
+    
 }
 
 function renderServices() {
-    app.innerHTML = '<h1>🛠️ Services<h1/><p>FrontEnd con JS<p/>'
+    app.innerHTML = '<h1>🛠️ Servicios<h1/><p>FrontEnd con JS<p/>'
 }
 
 function renderContact() {
-    app.innerHTML = '<h1>📧 Contact<h1/><p>clan@Hamilton.dev<p/>'
+    app.innerHTML = '<h1>📧 Contacto<h1/><p>clan@Hamilton.dev<p/>'
 }
 
 function renderNotFound() {
     app.innerHTML = '<h1> Not found 404<h1/><p>Página no encontrada<p/>'
+}
+
+let counter = 0
+function renderCounter() {
+    app.innerHTML = `
+    <h1>Contador</h1>
+    <p>${counter}</p>
+    <button id='add'>+</button>
+    `
+    document.getElementById('add').onclick = () =>{
+        counter ++
+        renderCounter()    
+    }
 }
 
 function renderWithAnimation(renderFunction) {
@@ -41,7 +55,9 @@ function routing() {
         case '#/contact':
             renderWithAnimation(renderContact)
             break;
-
+        case '#/counter':
+            renderWithAnimation(renderCounter)
+            break
         default:
             renderWithAnimation(renderNotFound)
     }
