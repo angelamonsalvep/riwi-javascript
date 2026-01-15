@@ -17,10 +17,11 @@ export function loginUser() {
     const btnLogin = document.getElementById('btnLogin')
     const inpUser = document.getElementById('inpUser')
     
-    
-    if (!store.user) {
+
+    if (/* !store.user */ !sessionStorage.getItem('user')) {
         btnLogin.addEventListener('click', () => {
-            store.user = inpUser.value
+            sessionStorage.setItem('user', inpUser.value)
+            // store.user = inpUser.value
             location.hash = "#/home"
         })
     }

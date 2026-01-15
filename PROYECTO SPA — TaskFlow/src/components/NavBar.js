@@ -14,7 +14,8 @@ export function NavBar() {
 export function logoutUser(){
     const logout = document.getElementById('logout')
     logout.addEventListener('click', () => {
-        store.user = null
+        // store.user = null
+        sessionStorage.removeItem('user')
         location.hash = '#/login'
     })
 }

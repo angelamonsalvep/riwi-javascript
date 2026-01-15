@@ -7,7 +7,7 @@ const app = document.getElementById('app')
 
 export function render(view) {
     app.innerHTML = `
-    ${store.user ? NavBar() : ""}
+    ${sessionStorage.getItem('user') ? NavBar() : ""}
     <main>${view}</main>`
 }
 

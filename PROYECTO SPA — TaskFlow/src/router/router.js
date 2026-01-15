@@ -8,7 +8,8 @@ import { logoutUser } from "../components/NavBar.js"
 
 export function router(){
     let route
-    route = !store.user ? location.hash = "#/login" : location.hash
+    // route = !store.user ? location.hash = "#/login" : location.hash
+    route = !sessionStorage.getItem('user') ? location.hash = "#/login" : location.hash
     switch (route) {
         case '#/login':
             render(Login())
