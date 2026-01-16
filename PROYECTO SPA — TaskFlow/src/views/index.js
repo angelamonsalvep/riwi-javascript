@@ -1,4 +1,4 @@
 export * from "./Login.js"
 export * from "./Home.js"
-export * from "./Services.js"
-export * from "./Contact.js"
+export * from "./TasksList.js"
+export * from "./AddTask.js"

@@ -1,9 +1,10 @@
 import { store } from "../store/store.js"
 import { render } from "../../app.js"
 /* components */
-import { Login, Home, Services, Contact } from "../views/index.js"
+import { Login, Home, TasksList, AddTask, addTask, mountTasksList } from "../views/index.js"
 import { loginUser } from "../views/Login.js"
 import { logoutUser } from "../components/NavBar.js"
+
 
 
 export function router(){
@@ -19,13 +20,15 @@ export function router(){
             render(Home())
             logoutUser()
             break;
-        case '#/services':
-            render(Services())
+        case '#/tasks':
+            render(TasksList())
             logoutUser()
+            mountTasksList()
             break;
-        case '#/contact':
-            render(Contact())
+        case '#/add-task':
+            render(AddTask())
             logoutUser()
+            addTask()
             break;
         default:
             break;
