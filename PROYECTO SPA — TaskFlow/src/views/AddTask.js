@@ -5,7 +5,7 @@ export function AddTask() {
     <section class="h-[calc(100vh-40px)] flex flex-col justify-center items-center">
         <form class="flex flex-col">
             <label>Agregar una tarea</label>
-            <input id="inpTask" class="border rounded p-1" placeholder="Escribe una tarea"/>
+            <input id="inpTask" class="border rounded p-1" placeholder="Escribe una tarea" maxlength="30"/>
             <button id="addTask" class="bg-blue-200 rounded mt-5">Añadir tarea</button>
         </form>
     </section>`

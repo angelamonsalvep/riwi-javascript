@@ -3,7 +3,7 @@ import { store } from "../store/store.js"
 
 export function TasksList() {
     const taskList = JSON.parse(sessionStorage.getItem('listTask')) || []
-    
+
     return `
     <ul id="taskList">
         ${taskList.length
@@ -44,18 +44,30 @@ const plantillaCard = (element) => {
     })
 } */
 export function mountTasksList() {
-  const list = document.getElementById("taskList")
-  list.addEventListener("change", (e) => {
-    if (e.target.type == "checkbox") {
-      const id = e.target.dataset.id
-      const task = store.tasks.find(t => t.id == id)
-      
-      task.state = e.target.checked   // ✅ ASIGNACIÓN
-      
-      render(TasksList())             // 🔁 re-render
-      mountTasksList()                // ✅ solo UNA vez tras render
-    }
-  })
+    const taskList = JSON.parse(sessionStorage.getItem('listTask')) || []
+    const list = document.getElementById("taskList")
+    list.addEventListener("change", (e) => {
+        if (e.target.type == "checkbox") {
+            const id = e.target.dataset.id
+
+            const item = taskList.find(t => t.id == id)
+            item.state = e.target.checked
+
+            const listItem = document.querySelector(`div[data-id="${id}"]`)
+            const itemText = listItem.querySelector('p:last-child')
+            item.state ? itemText.textContent = "Completado": itemText.textContent = "No completado"
+            
+            
+            
+            
+            // const task = taskList.find(t => t.id == id)
+            // console.log(task);
+            
+            // task.state = e.target.checked   // ✅ ASIGNACIÓN
+
+            // render(TasksList())              // 🔁 re-render
+        }
+    })
 }
 
 
