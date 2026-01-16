@@ -2,10 +2,12 @@ import { render } from "../../app.js"
 import { store } from "../store/store.js"
 
 export function TasksList() {
+    const taskList = JSON.parse(sessionStorage.getItem('listTask')) || []
+    
     return `
     <ul id="taskList">
-        ${store.tasks.length
-            ? store.tasks.map(plantillaCard).join("")
+        ${taskList.length
+            ? taskList.map(plantillaCard).join("")
             : "<li>La lista está vacía</li>"
         }
     </ul>
@@ -43,14 +45,13 @@ const plantillaCard = (element) => {
 } */
 export function mountTasksList() {
   const list = document.getElementById("taskList")
-
   list.addEventListener("change", (e) => {
-    if (e.target.type === "checkbox") {
-      const id = Number(e.target.dataset.id)
-      const task = store.tasks.find(t => t.id === id)
-
+    if (e.target.type == "checkbox") {
+      const id = e.target.dataset.id
+      const task = store.tasks.find(t => t.id == id)
+      
       task.state = e.target.checked   // ✅ ASIGNACIÓN
-
+      
       render(TasksList())             // 🔁 re-render
       mountTasksList()                // ✅ solo UNA vez tras render
     }

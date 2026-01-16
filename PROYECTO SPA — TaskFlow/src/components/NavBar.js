@@ -16,6 +16,7 @@ export function logoutUser(){
     logout.addEventListener('click', () => {
         // store.user = null
         sessionStorage.removeItem('user')
+        sessionStorage.removeItem('listTask')
         location.hash = '#/login'
     })
 }

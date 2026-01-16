@@ -31,13 +31,19 @@ class Task {
 export function addTask(){
     const btnAddTask = document.getElementById('addTask')
     const inpTask = document.getElementById('inpTask')
+    let listTask = JSON.parse(sessionStorage.getItem('listTask')) || []
     btnAddTask.addEventListener('click', () => {
         const task = new Task(
             sumarId(),
             inpTask.value
         )
         inpTask.value = ''
-        store.tasks.push(task)
+        listTask.push(task)
+
+        
+        sessionStorage.setItem('listTask', JSON.stringify(listTask))
+        
+        /* store.tasks.push(task) */
     })
     
 }
