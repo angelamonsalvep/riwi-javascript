@@ -1,20 +1,23 @@
 import { render } from "../../app.js"
+import { TaskCard } from "../components/TaskCard.js"
 import { store } from "../store/store.js"
+
+TaskCard
 
 export function TasksList() {
     const taskList = JSON.parse(sessionStorage.getItem('listTask')) || []
 
     return `
-    <ul id="taskList" class="p-9">
+    <ul id="taskList" class="py-9 px-20">
         ${taskList.length
-            ? taskList.map(plantillaCard).join("")
+            ? taskList.map(e => TaskCard(e)).join("")
             : "<li>La lista está vacía</li>"
         }
     </ul>
     `
 }
 
-const plantillaCard = (element) => {
+/* const plantillaCard = (element) => {
     return `
     <div data-id=${element.id} class="flex items-center justify-between border rounded p-4 m-2">
         <input ${element.state ? "checked" : ""} data-id=${element.id} id="taskState" type="checkbox"/>
@@ -27,7 +30,7 @@ const plantillaCard = (element) => {
         </span>
     </div>`
 }
-
+ */
 
 
 export function mountTasksList() {
@@ -54,10 +57,11 @@ export function mountTasksList() {
             }
             sessionStorage.setItem("listTask", JSON.stringify(taskList))
         }
-        if (e.target.tagName == 'SPAN') {
+        //Delete
+        if (e.target.tagName == 'SPAN') {            
             const id = e.target.dataset.id
-            taskList.pop(id)
-            console.log(e.target);
+            const idToDelete =  taskList.findIndex( t => t.id == id)
+            taskList.splice(idToDelete,1)
             sessionStorage.setItem("listTask", JSON.stringify(taskList))
             render(TasksList())
         }

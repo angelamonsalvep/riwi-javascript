@@ -1,12 +1,12 @@
-import { store } from "../store/store.js";
+
 
 export function NavBar() {
     return `
-    <nav class="w-full flex justify-center gap-12">
+    <nav class="w-full flex justify-center items-center gap-12 p-3">
       <a href="#/home">Home</a>
       <a href="#/tasks">Lista de tareas</a>
       <a href="#/add-task">Añadir Tarea</a>
-      <a id="logout" class="bg-red-200 p-2 rounded cursor-pointer">logout</a>
+      <a id="logout" class="bg-red-500 text-white p-2 rounded cursor-pointer">logout</a>
     </nav>
   `;
 }
