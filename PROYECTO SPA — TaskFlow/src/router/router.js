@@ -15,6 +15,7 @@ export function router(){
         case '#/login':
             render(Login())
             loginUser()
+            sessionStorage.clear()
             break;
         case '#/home':
             render(Home())

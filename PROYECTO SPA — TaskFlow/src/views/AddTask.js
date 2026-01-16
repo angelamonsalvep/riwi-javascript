@@ -12,7 +12,9 @@ export function AddTask() {
 }
 
 function increaseId(){
-    let id = 0
+    let listTask = JSON.parse(sessionStorage.getItem("listTask")) || []
+    // si la lista tiene algun valor, me va a traer el ultimo elemento de la lista.id de lo contrario será 0
+    let id = listTask.length ? listTask.at(-1).id : 0
     return function(){
         id++
         return id
