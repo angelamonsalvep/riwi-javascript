@@ -1,7 +1,5 @@
-
-
 export function NavBar() {
-    return `
+  return `
     <nav class="w-full flex justify-center items-center gap-12 p-3">
       <a href="#/home">Home</a>
       <a href="#/tasks">Lista de tareas</a>
@@ -10,10 +8,10 @@ export function NavBar() {
       <div>
         <label class="flex gap-2">
           <input id="toggle-dark-mode" class="sr-only peer" type="checkbox" value>
-          <div id="toggle-component" class="relative w-14 h-7 bg-gray-200 rounded-full after:content-[''] after:h-6 after:w-6 after:top-[2px] after:start-[4px] after:transition-all after:bg-white after:absolute after:rounded-full peer-checked:bg-red-100 peer-checked:after:translate-x-full">
+          <div id="toggle-component" class="relative w-14 h-7 bg-gray-200 rounded-full after:content-[''] after:h-6 after:w-6 after:top-[2px] after:start-[4px] after:transition-all after:bg-white after:absolute after:rounded-full peer-checked:bg-red-400 peer-checked:after:translate-x-full">
           </div>
           <span id="icon-dark-mode" class="material-symbols-outlined">
-          dark_mode
+          light_mode
           </span>
         </label>
       </div>
@@ -21,23 +19,13 @@ export function NavBar() {
   `;
 }
 
-export function logoutUser(){
-    const logout = document.getElementById('logout')
-    logout.addEventListener('click', () => {
-        // store.user = null
-        sessionStorage.removeItem('user')
-        sessionStorage.removeItem('listTask')
-        location.hash = '#/login'
-    })
+export function logoutUser() {
+  const logout = document.getElementById('logout')
+  logout.addEventListener('click', () => {
+    // store.user = null
+    sessionStorage.removeItem('user')
+    sessionStorage.removeItem('listTask')
+    location.hash = '#/login'
+  })
 }
-
-document.addEventListener('click', (e) =>{
-  if(e.target.id == 'toggle-dark-mode'){
-    console.log(e.target);
-    document.body.classList.toggle('dark')
-    e.target.checked ? 
-      document.documentElement.classList.replace('light', 'dark'):
-      document.documentElement.classList.replace('dark', 'light');
-  }
-})
 
