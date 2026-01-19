@@ -6,7 +6,7 @@ export function AddTask() {
         <form class="w-[28%] flex flex-col items-center">
             <label for="inpTask">Agregar una tarea</label>
             <input id="inpTask" class="border rounded p-1" placeholder="Escribe una tarea" maxlength="30"/>
-            <button id="addTask" class="w-1/2 text-white bg-rose-500 rounded mt-5">Añadir tarea</button>
+            <button id="addTask" class="p-2 w-1/2 text-white bg-rose-500 rounded mt-5">Añadir tarea</button>
         </form>
     </section>`
 }
@@ -15,6 +15,7 @@ function increaseId(){
     let listTask = JSON.parse(sessionStorage.getItem("listTask")) || []
     // si la lista tiene algun valor, me va a traer el ultimo elemento de la lista.id de lo contrario será 0
     let id = listTask.length ? listTask.at(-1).id : 0
+    
     return function(){
         id++
         return id
@@ -47,6 +48,7 @@ export function addTask(){
     
             
             sessionStorage.setItem('listTask', JSON.stringify(listTask))
+            location.hash = '#/tasks'
             
         }
         else{

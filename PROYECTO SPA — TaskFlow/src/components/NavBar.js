@@ -7,6 +7,16 @@ export function NavBar() {
       <a href="#/tasks">Lista de tareas</a>
       <a href="#/add-task">Añadir Tarea</a>
       <a id="logout" class="bg-red-500 text-white p-2 rounded cursor-pointer">logout</a>
+      <div>
+        <label class="flex gap-2">
+          <input id="toggle-dark-mode" class="sr-only peer" type="checkbox" value>
+          <div id="toggle-component" class="relative w-14 h-7 bg-gray-200 rounded-full after:content-[''] after:h-6 after:w-6 after:top-[2px] after:start-[4px] after:transition-all after:bg-white after:absolute after:rounded-full peer-checked:bg-red-100 peer-checked:after:translate-x-full">
+          </div>
+          <span id="icon-dark-mode" class="material-symbols-outlined">
+          dark_mode
+          </span>
+        </label>
+      </div>
     </nav>
   `;
 }
@@ -20,4 +30,14 @@ export function logoutUser(){
         location.hash = '#/login'
     })
 }
+
+document.addEventListener('click', (e) =>{
+  if(e.target.id == 'toggle-dark-mode'){
+    console.log(e.target);
+    document.body.classList.toggle('dark')
+    e.target.checked ? 
+      document.documentElement.classList.replace('light', 'dark'):
+      document.documentElement.classList.replace('dark', 'light');
+  }
+})
 

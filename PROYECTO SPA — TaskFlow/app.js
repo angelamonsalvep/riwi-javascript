@@ -1,6 +1,7 @@
 import { store } from "./src/store/store.js"
 import { router } from "./src/router/router.js"
 import { NavBar } from "./src/components/NavBar.js"
+import { Footer } from "./src/components/Footer.js"
 
 
 const app = document.getElementById('app')
@@ -8,30 +9,13 @@ const app = document.getElementById('app')
 export function render(view) {
     app.innerHTML = `
     ${sessionStorage.getItem('user') ? NavBar() : ""}
-    <main>${view}</main>`
+    <main>${view}</main>
+    <footer>${Footer()}</footer>`
 }
 
-
-// app.addEventListener('click', (e) => {
-//     console.log(e.target.closest('form'));
-//     const form = e.target.closest('form')
-//     const btnLogin = form.querySelector('button')
-
-// })
 
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
 
-
-/* window.addEventListener('load', () => {
-    const btnLogin = document.getElementById('btnLogin')
-    const inpUser = document.getElementById('inpUser')
-
-    btnLogin.addEventListener('click', ()=>{
-        loginUser(inpUser.value);
-    })
-
-
-}) */
 
