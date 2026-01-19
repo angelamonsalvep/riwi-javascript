@@ -28,6 +28,34 @@ function renderNotFound() {
   `;
 }
 
+let counter = 0;
+function renderCounter(){
+  app.innerHTML = `
+    <h1>Contador</h1>
+    <p>${counter}</p>
+    <button id='add'>+</button>
+    `;
+  document.getElementById('add').onclick = () => {
+    counter++;
+    renderCounter();
+  };
+}
+
+function renderCounter() {
+  app.innerHTML = `
+    <h1>Contador</h1>
+    <p>${counter}</p>
+    <button id="add">+</button>
+  `;
+
+  document.getElementById('add').onclick = () => {
+    counter++;
+    renderCounter();
+  };
+}
+
+
+
 function router() {
   const route = location.hash;
 
@@ -40,6 +68,9 @@ function router() {
       break;
     case '#/contact':
       renderContact();
+      break;
+    case '#/counter':
+      renderCounter();
       break;
     default:
       renderHome();
