@@ -9,7 +9,7 @@ export function render(view) {
     app.innerHTML = `
     ${sessionStorage.getItem('user') ? NavBar() : ""}
     <main>${view}</main>
-    <footer>${Footer()}</footer>`
+    ${sessionStorage.getItem('user') ? Footer() : ""}`
 }
 
 

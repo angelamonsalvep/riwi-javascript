@@ -6,7 +6,7 @@ export function Login() {
     <div class='w-full h-screen flex justify-center items-center'>
         <form class="bg-stone-100 h-1/2 w-[70%] gap-4 border rounded flex flex-col justify-center items-center">
             <h1 class="">Login</h1>
-            <input id="inpUser" class="p-1 rounded" id="userName" type="text" placeholder="Ingresar Usuario"/>
+            <input id="inpUser" class="p-1 rounded dark:placholder:text-red-400" id="userName" type="text" placeholder="Ingresar Usuario"/>
             <button id="btnLogin" class="bg-rose-200 rounded p-2">Ingresar</button>
         </form>
     </div>
