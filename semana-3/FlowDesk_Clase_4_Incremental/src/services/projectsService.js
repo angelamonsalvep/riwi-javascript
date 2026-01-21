@@ -1,7 +1,7 @@
 
 export async function fetchProjects() {
   const response = await fetch(
-    'https://jsonplaceholder.typicode.com/posts'
+    'http://localhost:3000/projects'
   );
 
   if (!response.ok) {

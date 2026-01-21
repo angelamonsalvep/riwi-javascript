@@ -12,8 +12,10 @@ export function ProjectDetail(id) {
 
   return `
     <h2>${project.title}</h2>
-    <p>ID: ${project.id}</p>
-    <p>DESCRIPTION: ${project.body}</p>
+    <br>ID: ${project.id}</br>
+    <br>NOMBRE: ${project.title}</br>
+    <br>ESTADO: ${project.status}</br>
+    <br/>
     <a href="#/projects">⬅ Volver</a>
   `;
 }
