@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "name": "user@test.com",
+            "password": "123",
+            "role": "visitor"
+        },
+        {
+            "name": "admin",
+            "password": "123",
+            "role": "admin"
+        }
+    ],
+    "projects": [
+        {
+            "name" : "México",
+            "cod" : "MX",
+            "longitude": "2",
+            "latitude" : "-72"
+        },
+        {
+            "name" : "México",
+            "cod" : "MX",
+            "longitude": "72",
+            "latitude" : "-9"
+        }
+    ]
+}

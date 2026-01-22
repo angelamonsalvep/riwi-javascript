@@ -1,9 +1,10 @@
 import { render } from '../core/render.js';
-import { Dashboard } from '../views/index.js';
+import { Dashboard ,ListProyects, ProjectDetail} from '../views/index.js';
 
-export function router() {
+export async function router() {
   const hash = location.hash || '#/dashboard';
   const [, route, param] = hash.split('/');
+  let view = '<p>Cargando...</p>';
 
   switch (route) {
     case 'dashboard':
@@ -14,7 +15,8 @@ export function router() {
       if (param) {
         render(ProjectDetail(param));
       } else {
-        render(Projects());
+        view = await ListProyects();
+        render(view)
       }
       break;
 
