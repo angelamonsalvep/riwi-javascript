@@ -1,7 +1,9 @@
+import { filterProjects } from "../services/projectsServices.js";
 import { ListProyect } from "./ListProjects.js";
 
+const stats  = filterProjects((JSON.parse(sessionStorage.getItem('projects'))))
 export async function Dashboard(){
-   
+    
 
     return `
     <!-- Main Content -->
@@ -40,15 +42,15 @@ export async function Dashboard(){
             <div class="stats-grid">
                 <div class="stat-card green">
                     <p class="stat-label">Proyectos Activos</p>
-                    <p class="stat-value">4</p>
+                    <p class="stat-value">${stats.projectsActives.amount}</p>
                 </div>
                 <div class="stat-card yellow">
                     <p class="stat-label">En Desarrollo</p>
-                    <p class="stat-value">1</p>
+                    <p class="stat-value">${stats.projectsPending.amount}</p>
                 </div>
                 <div class="stat-card gray">
                     <p class="stat-label">Finalizados</p>
-                    <p class="stat-value">1</p>
+                    <p class="stat-value">${stats.projectsFinished.amount}</p>
                 </div>
             </div>
         </section>

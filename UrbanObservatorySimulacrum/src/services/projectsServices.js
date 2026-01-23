@@ -9,7 +9,27 @@ async function getProjects(){
     }
 }
 
+function filterProjects(projects) {    
+    const actives = projects.filter(a => a.state == 'active')
+    const pendings = projects.filter(a => a.state == 'pending')
+    const finisheds = projects.filter(a => a.state == 'finished')
+    return {
+        projectsActives : {
+            projects: actives,
+            amount : actives.length
+        },
+        projectsPending:{
+            projects:pendings,
+            amount:pendings.length
+        },
+        projectsFinished:{
+            projects:finisheds,
+            amount:finisheds.length
+        }
+    }
+} 
 
 export {
-    getProjects
+    getProjects,
+    filterProjects
 }
