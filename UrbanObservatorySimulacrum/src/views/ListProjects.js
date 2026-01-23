@@ -11,7 +11,6 @@ export async function ListProyect() {
     const weather = await Promise.all(
         projects.map(p => getWeather(p.longitude, p.latitude))
     )
-    console.log(weather);
 
     /* en el .map() NO OLVIDAR EL join('') PARA QUE FUNCIONE*/
     return `

@@ -14,9 +14,16 @@ export function Navbar(){
             <nav class="header-nav">
                 <a href="#/dashboard">Inicio</a>
                 <a href="#/projects">Proyectos</a>
-                <a href="#">Acerca de</a>
+                <a href="#/about">Acerca de</a>
+                <a id="btn-logout" href="#/login">Cerrar sesión</a>
             </nav>
         </div>
     </header>
     `
 }
+
+document.addEventListener("click", (e) => {
+    if(e.target.matches("#btn-logout")){
+        sessionStorage.clear()
+    }
+})
