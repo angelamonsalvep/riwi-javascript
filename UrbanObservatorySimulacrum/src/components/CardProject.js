@@ -1,3 +1,18 @@
+const states = {
+    "active" : {
+        nameState: "Activo",
+        className : "active"
+    },
+    pending : {
+        nameState: "Pendiente",
+        className : "pending"
+    },
+    finished : {
+        nameState: "Finaizado",
+        className : "finished"
+    },
+}
+
 export function CardProject(project,weather) {
     return `
     <!-- Project Card  -->
@@ -17,7 +32,7 @@ export function CardProject(project,weather) {
                                 </svg>
                             </button>
                         </div>
-                        <span class="badge active">Activo</span>
+                        <span class="badge ${states[project.state].className}">${states[project.state].nameState}</span>
                     </div>
                     <div class="project-body">
                         <p class="project-description">Sistema de alerta temprana y análisis de calidad del aire en tiempo real.</p>
