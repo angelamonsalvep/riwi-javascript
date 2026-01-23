@@ -1,5 +1,5 @@
 import { render } from "../core/render.js";
-import { Login,Dashboard,Detail, NotFound } from "../views/index.js";
+import { Login,Dashboard,Detail, NotFound, CreateProject } from "../views/index.js";
 
 
 export async function router(){
@@ -16,6 +16,7 @@ export async function router(){
         'login' : Login,
         'dashboard' : Dashboard,
         'detail' : Detail,
+        'create-project' : CreateProject,
     }
 
     const routeView = routes[route]

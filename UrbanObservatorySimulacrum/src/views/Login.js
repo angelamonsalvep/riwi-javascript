@@ -24,7 +24,7 @@ export function Login(){
           <input id="password" type="password" placeholder="••••••••" required />
         </div>
 
-        <button type="submit" class="btn btn-primary">
+        <button id="btn-login" type="submit" class="btn btn-primary">
           Iniciar sesión
         </button>
 
@@ -44,7 +44,7 @@ export function Login(){
 }
 
 document.addEventListener('click',async (e)=>{
-    if(e.target.tagName === 'BUTTON'){
+    if(e.target.id === 'btn-login'){
         const passwordContainer = e.target.previousElementSibling
         const userContainer = e.target.previousElementSibling.previousElementSibling
         const inpPassword = passwordContainer.querySelector('input')

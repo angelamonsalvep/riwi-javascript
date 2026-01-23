@@ -13,7 +13,7 @@ export function Navbar(){
             </div>
             <nav class="header-nav">
                 <a href="#/dashboard">Inicio</a>
-                <a href="#/projects">Proyectos</a>
+                <a href="#/create-project">Crear Proyectos</a>
                 <a href="#/about">Acerca de</a>
                 <a id="btn-logout" href="#/login">Cerrar sesión</a>
             </nav>

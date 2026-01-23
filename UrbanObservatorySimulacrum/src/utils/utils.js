@@ -8,7 +8,7 @@ export const stateProjects = {
         className: "pending"
     },
     finished: {
-        nameState: "Finaizado",
+        nameState: "Finalizado",
         className: "finished"
     },
 }

@@ -12,7 +12,7 @@ export function CardProject(project,weather) {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
-                                <h3 class="project-title">${project.name}</h3>
+                                <h3 class="project-title">${project.city}</h3>
                             </div>
                             <button class="favorite-button" aria-label="Marcar como favorito">
                                 <svg class="favorite-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@ export function CardProject(project,weather) {
                         <span class="badge ${stateProjects[project.state].className}">${stateProjects[project.state].nameState}</span>
                     </div>
                     <div class="project-body">
-                        <p class="project-description">Sistema de alerta temprana y análisis de calidad del aire en tiempo real.</p>
+                        <p class="project-description">${project.name}</p>
                         <div class="weather-grid">
                             <div class="weather-item temp">
                                 <svg class="weather-icon temp" fill="none" stroke="currentColor" viewBox="0 0 24 24">

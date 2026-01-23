@@ -5,7 +5,8 @@ import { getProjects } from "../services/projectsServices.js";
 
 export async function ListProyect() {
     const projects = await getProjects()
-    // const projects = sessionStorage.getItem('projects') ? JSON.parse(sessionStorage.getItem('projects')) : await getProjects()
+    console.log(projects);
+    
 
     //obtener la lista en base a la lista de projectos
     const weather = await Promise.all(

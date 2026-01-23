@@ -1,9 +1,9 @@
-import { filterProjects } from "../services/projectsServices.js";
+import { filterProjects, getProjects } from "../services/projectsServices.js";
 import { ListProyect } from "./ListProjects.js";
-
-const stats  = filterProjects((JSON.parse(sessionStorage.getItem('projects'))))
+import {render} from '../core/render.js'
 export async function Dashboard(){
     
+    let stats =  await filterProjects()
 
     return `
     <!-- Main Content -->
