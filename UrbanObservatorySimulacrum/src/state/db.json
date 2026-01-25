@@ -3,12 +3,14 @@
     {
       "name": "user@test.com",
       "password": "123",
-      "role": "visitor"
+      "role": "visitor",
+      "id": "b868"
     },
     {
       "name": "admin",
       "password": "123",
-      "role": "admin"
+      "role": "admin",
+      "id": "5c9a"
     }
   ],
   "projects": [
@@ -17,21 +19,24 @@
       "city": "MX",
       "longitude": "2",
       "latitude": "-72",
-      "state": "active"
+      "state": "active",
+      "id": "047b"
     },
     {
       "name": "Colombia",
       "city": "CO",
       "longitude": "-75.5636",
       "latitude": "6.2518",
-      "state": "pending"
+      "state": "pending",
+      "id": "c343"
     },
     {
       "name": "Colombia",
       "city": "CO",
       "longitude": "-75.5636",
       "latitude": "6.2518",
-      "state": "finished"
+      "state": "finished",
+      "id": "abd9"
     },
     {
       "id": "85c5",
@@ -56,6 +61,14 @@
       "longitude": "-80.1937",
       "latitude": "25.7743",
       "state": "finished"
+    },
+    {
+      "id": "5221",
+      "name": "nuev",
+      "city": "Bello",
+      "longitude": "3",
+      "latitude": "3",
+      "state": "active"
     }
   ]
 }
