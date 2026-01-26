@@ -63,8 +63,8 @@ async function filterProjects(status) {
         case 'finished':
             return projects.filter(a => a.state == 'finished')
             break;
-
-        default:
+    
+        default:            
             return projects
             break;
     }

@@ -1,17 +1,16 @@
 import { filterProjects, getProjects } from "../services/projectsServices.js";
 import { ListProyect } from "./ListProjects.js";
 import { render } from '../core/render.js'
-import { Loading } from "../components/Loading.js";
-import { getWeather } from "../services/meteoServices.js";
-
+import { Loadin } from "../components/Loading.js";
+let stats = null
+let status = 'all'
 export async function Dashboard(status = '') {
-    // Mostrar loading mientras se cargan los proyectos
-    render(Loading({ message: 'Cargando proyectos...' }))
-    
+    render(Loadin())
     let listaProjects = await filterProjects(status)   
     if (listaProjects.length === 0){
         listaProjects = await getProjects()
-    }   
+    }
+    
 
     return `
     <!-- Main Content -->
@@ -50,15 +49,15 @@ export async function Dashboard(status = '') {
             <div class="stats-grid">
                 <div class="stat-card green">
                     <p class="stat-label">Proyectos Activos</p>
-                    <p class="stat-value">${listaProjects.filter(p => p.state === 'active').length}</p>
+                    <p class="stat-value">${listaProjects.filter(a => a.state == 'active')}</p>
                 </div>
                 <div class="stat-card yellow">
                     <p class="stat-label">En Desarrollo</p>
-                    <p class="stat-value">${listaProjects.filter(p => p.state === 'pending').length}</p>
+                    <p class="stat-value">${listaProjects.filter(a => a.state == 'pending')}</p>
                 </div>
                 <div class="stat-card gray">
                     <p class="stat-label">Finalizados</p>
-                    <p class="stat-value">${listaProjects.filter(p => p.state === 'finished').length}</p>
+                    <p class="stat-value">${listaProjects.filter(a => a.state == 'finished')}</p>
                 </div>
             </div>
         </section>
