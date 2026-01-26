@@ -1,9 +1,10 @@
 import { filterProjects, getProjects } from "../services/projectsServices.js";
 import { ListProyect } from "./ListProjects.js";
-import {render} from '../core/render.js'
-export async function Dashboard(){
-    
-    let stats =  await filterProjects()
+import { render } from '../core/render.js'
+let stats = null
+let status = 'all'
+export async function Dashboard(listaProjects = JSON.parse(sessionStorage.getItem('projects'))) {
+    stats = await filterProjects()
 
     return `
     <!-- Main Content -->
@@ -22,9 +23,9 @@ export async function Dashboard(){
                         <div class="search-filters">
                             <select class="select-input">
                                 <option value="">Todos los estados</option>
-                                <option value="activo">Activo</option>
-                                <option value="finalizado">Finalizado</option>
-                                <option value="pendiente">Pendiente</option>
+                                <option value="active">Activo</option>
+                                <option value="finished">Finalizado</option>
+                                <option value="pending">Pendiente</option>
                             </select>
                             <button type="button" class="filter-button">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
@@ -56,8 +57,35 @@ export async function Dashboard(){
         </section>
 
         <!-- Projects Grid -->
-        ${await ListProyect()}
+        ${await ListProyect(listaProjects)}
     </main>
 
     `
 }
+
+document.addEventListener('change', async (e) => {
+    if (e.target.classList.contains('select-input')) {
+        let status = e.target.value
+        console.log(status);
+        switch (status) {
+            case '':
+                render(await Dashboard(stats.projectsActives.projects.concat(stats.projectsPending.projects, stats.projectsFinished.projects)))
+                break;
+            case 'pending':
+                render(await Dashboard(stats.projectsPending.projects))
+                break;
+            case 'finished':
+                render(await Dashboard(stats.projectsFinished.projects))
+                break;
+            case 'active':
+                render(await Dashboard(stats.projectsActives.projects))
+                break;
+            default:
+                render(await Dashboard(stats.projectsActives.projects.concat(stats.projectsPending.projects, stats.projectsFinished.projects)))
+                break;
+        }
+        
+        //filtro los proyectos por estado
+        //vuelvo a renderizar la vista con los proyectos filtrados
+    }
+})

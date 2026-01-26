@@ -19,13 +19,17 @@ async function createProject(name, city, longitude, latitude, state) {
             },
             body: JSON.stringify(project)
         })
-        if (!response.ok) throw new Error('Error to create user')
+        console.log(response);
+        if (!response.ok) throw new Error('Error to create project')
+
     } catch (error) {
         console.error(error);
     }
 }
 
 async function getProjects() {
+    if (sessionStorage.getItem('projects'))
+        return JSON.parse(sessionStorage.getItem('projects'))
     try {
         const response = await fetch('http://localhost:3000/projects')
         const data = await response.json()
