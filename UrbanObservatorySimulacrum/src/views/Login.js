@@ -24,7 +24,7 @@ export function Login(){
           <input id="password" type="password" placeholder="••••••••" required />
         </div>
 
-        <button id="btn-login" type="submit" class="btn btn-primary">
+        <button id="btn-login" class="btn btn-primary">
           Iniciar sesión
         </button>
 

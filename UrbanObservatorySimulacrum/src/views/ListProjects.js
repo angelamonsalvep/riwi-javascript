@@ -4,16 +4,13 @@ import { getProjects } from "../services/projectsServices.js";
 
 
 export async function ListProyect(listaProjects){
-    console.log(listaProjects);
-    
-    const projects = await getProjects()
-    console.log(projects);
     
 
     //obtener la lista en base a la lista de projectos
     const weather = await Promise.all(
         listaProjects.map(p => getWeather(p.longitude, p.latitude))
     )
+    
 
     /* en el .map() NO OLVIDAR EL join('') PARA QUE FUNCIONE*/
     return `

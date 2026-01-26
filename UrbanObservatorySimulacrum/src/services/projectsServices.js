@@ -19,7 +19,6 @@ async function createProject(name, city, longitude, latitude, state) {
             },
             body: JSON.stringify(project)
         })
-        console.log(response);
         if (!response.ok) throw new Error('Error to create project')
 
     } catch (error) {
@@ -28,8 +27,8 @@ async function createProject(name, city, longitude, latitude, state) {
 }
 
 async function getProjects() {
-    if (sessionStorage.getItem('projects'))
-        return JSON.parse(sessionStorage.getItem('projects'))
+/*     if (sessionStorage.getItem('projects'))
+        return JSON.parse(sessionStorage.getItem('projects')) */
     try {
         const response = await fetch('http://localhost:3000/projects')
         const data = await response.json()
@@ -40,24 +39,30 @@ async function getProjects() {
     }
 }
 
-async function filterProjects(projects) {
-    projects = await getProjects()
-    const actives = projects.filter(a => a.state == 'active')
-    const pendings = projects.filter(a => a.state == 'pending')
-    const finisheds = projects.filter(a => a.state == 'finished')
-    return {
-        projectsActives: {
-            projects: actives,
-            amount: actives.length
-        },
-        projectsPending: {
-            projects: pendings,
-            amount: pendings.length
-        },
-        projectsFinished: {
-            projects: finisheds,
-            amount: finisheds.length
-        }
+/* async function filterProjects(status,name) {
+    let projects = await getProjects()
+    
+    return projects.filter(p => p.status == status && p.name.toLowerCase().includes(name.toLowerCase()))
+    
+} */
+async function filterProjects(status) {
+    let projects = await getProjects()
+    switch (status) {
+        case 'active':
+            return projects.filter(a => a.state == 'active')         
+            break;
+        case 'pending':
+            return projects.filter(a => a.state == 'pending')        
+            break;
+        case 'finished':
+            return projects.filter(a => a.state == 'finished')        
+            break;
+    
+        default:
+            console.log(projects);
+            
+            return projects
+            break;
     }
 }
 

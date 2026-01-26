@@ -3,12 +3,12 @@ import { ListProyect } from "./ListProjects.js";
 import { render } from '../core/render.js'
 let stats = null
 let status = 'all'
-export async function Dashboard(listaProjects = []) {
+export async function Dashboard(status = '') {
+    let listaProjects = await filterProjects(status)   
     if (listaProjects.length === 0){
         listaProjects = await getProjects()
     }
     
-    stats = await filterProjects()
 
     return `
     <!-- Main Content -->
@@ -26,10 +26,10 @@ export async function Dashboard(listaProjects = []) {
                         </div>
                         <div class="search-filters">
                             <select class="select-input">
-                                <option value="">Todos los estados</option>
-                                <option value="active">Activo</option>
-                                <option value="finished">Finalizado</option>
-                                <option value="pending">Pendiente</option>
+                                <option ${status == '' ? 'selected' : ""} value="">Todos los estados</option>
+                                <option ${status == 'active' ? 'selected' : ""} value="active">Activo</option>
+                                <option ${status == 'finished' ? 'selected' : ""} value="finished">Finalizado</option>
+                                <option ${status == 'pending' ? 'selected' : ""} value="pending">Pendiente</option>
                             </select>
                             <button type="button" class="filter-button">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
@@ -47,15 +47,15 @@ export async function Dashboard(listaProjects = []) {
             <div class="stats-grid">
                 <div class="stat-card green">
                     <p class="stat-label">Proyectos Activos</p>
-                    <p class="stat-value">${stats.projectsActives.amount}</p>
+                    <p class="stat-value"></p>
                 </div>
                 <div class="stat-card yellow">
                     <p class="stat-label">En Desarrollo</p>
-                    <p class="stat-value">${stats.projectsPending.amount}</p>
+                    <p class="stat-value"></p>
                 </div>
                 <div class="stat-card gray">
                     <p class="stat-label">Finalizados</p>
-                    <p class="stat-value">${stats.projectsFinished.amount}</p>
+                    <p class="stat-value"></p>
                 </div>
             </div>
         </section>
@@ -67,13 +67,13 @@ export async function Dashboard(listaProjects = []) {
     `
 }
 
-document.addEventListener('change', async (e) => {
+/* document.addEventListener('change', async (e) => {
     if (e.target.classList.contains('select-input')) {
         let status = e.target.value
         console.log(status);
         switch (status) {
             case '':
-                render(await Dashboard(stats.projectsActives.projects.concat(stats.projectsPending.projects, stats.projectsFinished.projects)))
+                render(await Dashboard())
                 break;
             case 'pending':
                 render(await Dashboard(stats.projectsPending.projects))
@@ -85,11 +85,22 @@ document.addEventListener('change', async (e) => {
                 render(await Dashboard(stats.projectsActives.projects))
                 break;
             default:
-                render(await Dashboard(stats.projectsActives.projects.concat(stats.projectsPending.projects, stats.projectsFinished.projects)))
+                render(await Dashboard())
                 break;
         }
         
         //filtro los proyectos por estado
         //vuelvo a renderizar la vista con los proyectos filtrados
     }
-})
+}) */
+
+    document.addEventListener('change', async (e) => {
+    if (e.target.classList.contains('select-input')) {
+        let status = e.target.value
+        render(await Dashboard(status))
+        
+        //filtro los proyectos por estado
+        //vuelvo a renderizar la vista con los proyectos filtrados
+        
+    }
+}) 

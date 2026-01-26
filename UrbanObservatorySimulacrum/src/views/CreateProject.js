@@ -68,7 +68,7 @@ export function CreateProject() {
     `
 }
 
-/* document.addEventListener('click', (e) => {
+document.addEventListener('click', (e) => {
     if (e.target.id === 'btn-save-project') {
       const form = e.target.closest('#createProjectForm')
       e.preventDefault()
@@ -82,20 +82,23 @@ export function CreateProject() {
         createProject(name.value, city.value, lon.value, lat.value, status.value)
         location.hash = "#/dashboard"
     }
-}) */
-document.addEventListener('submit', (e) => {
-  e.preventDefault()
+})
+/* document.addEventListener('submit', (e) => {
+    e.preventDefault()
   console.log(e.target);
   const btn = e.target.querySelector('#btn-save-project')
   if (e.target.id === 'createProjectForm') {
     const form = e.target
-    const name = form.querySelector('#name')
-    const city = form.querySelector('#city')
-    const lat = form.querySelector('#lat')
-    const lon = form.querySelector('#lon')
-    const status = form.querySelector('#status')
-    createProject(name.value, city.value, lon.value, lat.value, status.value)
-    location.hash = "#/dashboard"
+    form.addEventListener('submit', (ev)=>{
+      ev.preventDefault()
+      const name = form.querySelector('#name')
+      const city = form.querySelector('#city')
+      const lat = form.querySelector('#lat')
+      const lon = form.querySelector('#lon')
+      const status = form.querySelector('#status')
+      createProject(name.value, city.value, lon.value, lat.value, status.value)
+      
+    })
   }
 
-})
+}) */
