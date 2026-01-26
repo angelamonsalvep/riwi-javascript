@@ -3,7 +3,11 @@ import { ListProyect } from "./ListProjects.js";
 import { render } from '../core/render.js'
 let stats = null
 let status = 'all'
-export async function Dashboard(listaProjects = JSON.parse(sessionStorage.getItem('projects'))) {
+export async function Dashboard(listaProjects = []) {
+    if (listaProjects.length === 0){
+        listaProjects = await getProjects()
+    }
+    
     stats = await filterProjects()
 
     return `
