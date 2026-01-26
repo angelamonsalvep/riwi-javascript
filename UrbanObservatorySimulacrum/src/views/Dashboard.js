@@ -1,14 +1,17 @@
 import { filterProjects, getProjects } from "../services/projectsServices.js";
 import { ListProyect } from "./ListProjects.js";
 import { render } from '../core/render.js'
-let stats = null
-let status = 'all'
+import { Loading } from "../components/Loading.js";
+import { getWeather } from "../services/meteoServices.js";
+
 export async function Dashboard(status = '') {
+    // Mostrar loading mientras se cargan los proyectos
+    render(Loading({ message: 'Cargando proyectos...' }))
+    
     let listaProjects = await filterProjects(status)   
     if (listaProjects.length === 0){
         listaProjects = await getProjects()
-    }
-    
+    }   
 
     return `
     <!-- Main Content -->
@@ -47,15 +50,15 @@ export async function Dashboard(status = '') {
             <div class="stats-grid">
                 <div class="stat-card green">
                     <p class="stat-label">Proyectos Activos</p>
-                    <p class="stat-value"></p>
+                    <p class="stat-value">${listaProjects.filter(p => p.state === 'active').length}</p>
                 </div>
                 <div class="stat-card yellow">
                     <p class="stat-label">En Desarrollo</p>
-                    <p class="stat-value"></p>
+                    <p class="stat-value">${listaProjects.filter(p => p.state === 'pending').length}</p>
                 </div>
                 <div class="stat-card gray">
                     <p class="stat-label">Finalizados</p>
-                    <p class="stat-value"></p>
+                    <p class="stat-value">${listaProjects.filter(p => p.state === 'finished').length}</p>
                 </div>
             </div>
         </section>
@@ -67,32 +70,7 @@ export async function Dashboard(status = '') {
     `
 }
 
-/* document.addEventListener('change', async (e) => {
-    if (e.target.classList.contains('select-input')) {
-        let status = e.target.value
-        console.log(status);
-        switch (status) {
-            case '':
-                render(await Dashboard())
-                break;
-            case 'pending':
-                render(await Dashboard(stats.projectsPending.projects))
-                break;
-            case 'finished':
-                render(await Dashboard(stats.projectsFinished.projects))
-                break;
-            case 'active':
-                render(await Dashboard(stats.projectsActives.projects))
-                break;
-            default:
-                render(await Dashboard())
-                break;
-        }
-        
-        //filtro los proyectos por estado
-        //vuelvo a renderizar la vista con los proyectos filtrados
-    }
-}) */
+
 
     document.addEventListener('change', async (e) => {
     if (e.target.classList.contains('select-input')) {
@@ -104,3 +82,26 @@ export async function Dashboard(status = '') {
         
     }
 }) 
+
+
+
+export async function ListProyecta(listaProjects){
+    // Mostrar loading mientras se carga el clima
+    /* const loadingHtml = Loading({ message: 'Cargando datos climáticos...' }) */
+    
+    //obtener la lista en base a la lista de projectos
+    const weather = await Promise.all(
+        listaProjects.map(p => getWeather(p.longitude, p.latitude))
+    )
+    
+
+    /* en el .map() NO OLVIDAR EL join('') PARA QUE FUNCIONE*/
+    return `
+    <section class="container">
+            <div class="projects-grid">
+               ${listaProjects.map((p, i) => CardProject(p, weather[i])).join('')}
+            </div>
+        </section>
+    `
+}
+
